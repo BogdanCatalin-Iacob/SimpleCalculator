@@ -1,2 +1,5 @@
 # SimpleCalculator
-just a simple begginer calculator
+just a simple beginner calculator
+
+*/missing the code for "+/-" button,
+del button code is wrong*/
