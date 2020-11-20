@@ -23,6 +23,7 @@ public class DigitButtons extends Button implements ActionListener {
     }
 
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String tempText = ((DigitButtons) e.getSource()).getLabel();
@@ -35,8 +36,18 @@ public class DigitButtons extends Button implements ActionListener {
             }
             return;
         }
+        double num;
+        if(tempText.equals("+/-")){
+            try {
+                num = Double.parseDouble(calculator.displayLabel.getText());
+            }catch(NumberFormatException e2){
+                return;
+            }
+            num *= -1;
+            calculator.displayLabel.setText("" + num);
+        }
 
-        int index = 0;
+        int index;
         try{
             index = Integer.parseInt(tempText);
         }catch (NumberFormatException er){
@@ -51,5 +62,6 @@ public class DigitButtons extends Button implements ActionListener {
         }else{
             calculator.displayLabel.setText(calculator.displayLabel.getText() + index);
         }
+
     }
 }

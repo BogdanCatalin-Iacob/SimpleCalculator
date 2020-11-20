@@ -21,7 +21,6 @@ public class SimpleCalculator extends Frame {
     MemoryButtons[] memoryButtons = new MemoryButtons[memoryButtonText.length];
     SpecialButtons[] specialButtons = new SpecialButtons[specialButtonText.length];
 
-
     Label displayLabel = new Label("0", Label.RIGHT);
     Label memoryLabel = new Label(" ", Label.RIGHT);
 

@@ -17,11 +17,11 @@ public class SpecialButtons extends Button implements ActionListener {
     }
 
     static String delete(String s){
-        String res = "";
-        for(int i = 0; i < s.length() - 1; i++){
-            res += s.charAt(i);
-        }
-        return s;
+        String res = s.substring(0, s.length() - 1);
+//        for(int i = 0; i < s.length() - 1; i++){
+//            res += s.charAt(i);
+//        }
+        return res;
     }
 
     @Override
