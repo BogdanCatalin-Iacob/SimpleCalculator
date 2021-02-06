@@ -1,10 +1,10 @@
 package bogdan.iacob;
 
-import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SpecialButtons extends Button implements ActionListener {
+public class SpecialButtons extends JButton implements ActionListener{
 
     SimpleCalculator calculator;
 
@@ -26,7 +26,7 @@ public class SpecialButtons extends Button implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String opText = ((SpecialButtons)e.getSource()).getLabel();
+        String opText = ((SpecialButtons)e.getSource()).getText();
         if(opText.equals("Del")){
             String tempText = delete(calculator.displayLabel.getText());
             if(tempText.equals("")){
