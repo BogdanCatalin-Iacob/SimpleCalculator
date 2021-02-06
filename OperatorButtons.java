@@ -1,10 +1,10 @@
 package bogdan.iacob;
 
-import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class OperatorButtons extends Button implements ActionListener {
+public class OperatorButtons extends JButton implements ActionListener{
 
     SimpleCalculator calculator;
 
@@ -18,19 +18,19 @@ public class OperatorButtons extends Button implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String opText = ((OperatorButtons)e.getSource()).getLabel();
+        String operatorText = ((OperatorButtons)e.getSource()).getText();
         calculator.setClear = true;
         double temp = Double.parseDouble(calculator.displayLabel.getText());
-        if(opText.equals("1/x")){
+        if(operatorText.equals("1/x")){
             try{
-                double tempD = 1 / (double)temp;
+                double tempD = 1 / temp;
                 calculator.displayLabel.setText(SimpleCalculator.getFormattedText(tempD));
             }catch(ArithmeticException ae){
                 calculator.displayLabel.setText("Divide by 0.");
             }
             return;
         }
-        if(opText.equals("sqrt")){
+        if(operatorText.equals("sqrt")){
             try{
                 double temp1 = Math.sqrt(temp);
                 calculator.displayLabel.setText(SimpleCalculator.getFormattedText(temp1));
@@ -39,9 +39,9 @@ public class OperatorButtons extends Button implements ActionListener {
             }
             return;
         }
-        if(!opText.equals("=")){
+        if(!operatorText.equals("=")){
             calculator.number = temp;
-            calculator.operator = opText.charAt(0);
+            calculator.operator = operatorText.charAt(0);
             return;
         }
 

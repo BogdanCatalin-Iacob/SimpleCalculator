@@ -1,32 +1,34 @@
 package bogdan.iacob;
 
-import java.awt.*;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
-public class DigitButtons extends Button implements ActionListener {
+public class DigitButtons extends JButton implements ActionListener {
 
     SimpleCalculator calculator;
-    DigitButtons(int x, int y, int width, int height, String letters, SimpleCalculator calculator){
+
+    DigitButtons(int x, int y, int width, int height, String letters, SimpleCalculator calculator) {
         super(letters);
         setBounds(x, y, width, height);
         this.calculator = calculator;
         this.calculator.add(this);
         addActionListener(this);
     }
-    static boolean isInString(String s, char ch){
-        for(int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == ch) {
+
+    static boolean isInString(String s, char ch) {
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ch) {
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String tempText = ((DigitButtons) e.getSource()).getLabel();
+        String tempText = ((DigitButtons) e.getSource()).getText();
         if (tempText.equals(".")) {
             if (calculator.setClear) {
                 calculator.displayLabel.setText("0");
@@ -37,31 +39,34 @@ public class DigitButtons extends Button implements ActionListener {
             return;
         }
         double num;
-        if(tempText.equals("+/-")){
+        DecimalFormat df = new DecimalFormat("0.##");
+        if (tempText.equals("+/-")) {
             try {
                 num = Double.parseDouble(calculator.displayLabel.getText());
-            }catch(NumberFormatException e2){
+            } catch (NumberFormatException e2) {
                 return;
             }
             num *= -1;
-            calculator.displayLabel.setText("" + num);
+            calculator.displayLabel.setText("" + df.format(num));
         }
 
         int index;
-        try{
+        try {
             index = Integer.parseInt(tempText);
-        }catch (NumberFormatException er){
+        } catch (NumberFormatException er) {
             return;
         }
-        if(index == 0 && calculator.displayLabel.getText().equals("0")){
+        if (index == 0 && calculator.displayLabel.getText().equals("0")) {
             return;
         }
-        if(calculator.setClear){
+        if (calculator.setClear) {
             calculator.displayLabel.setText("" + index);
             calculator.setClear = false;
-        }else{
+        } else {
             calculator.displayLabel.setText(calculator.displayLabel.getText() + index);
         }
-
     }
 }
+
+
+
