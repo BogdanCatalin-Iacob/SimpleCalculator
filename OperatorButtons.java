@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 
 public class OperatorButtons extends JButton implements ActionListener{
 
-    SimpleCalculator calculator;
+    SimpleCalculatorUI calculator;
 
-    OperatorButtons(int x, int y, int width, int height, String letter, SimpleCalculator calculator){
+    OperatorButtons(int x, int y, int width, int height, String letter, SimpleCalculatorUI calculator){
         super(letter);
         setBounds(x, y, width, height);
         this.calculator = calculator;
@@ -24,16 +24,16 @@ public class OperatorButtons extends JButton implements ActionListener{
         if(operatorText.equals("1/x")){
             try{
                 double tempD = 1 / temp;
-                calculator.displayLabel.setText(SimpleCalculator.getFormattedText(tempD));
+                calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(tempD));
             }catch(ArithmeticException ae){
                 calculator.displayLabel.setText("Divide by 0.");
             }
             return;
         }
-        if(operatorText.equals("sqrt")){
+        if(operatorText.equals("√")){
             try{
                 double temp1 = Math.sqrt(temp);
-                calculator.displayLabel.setText(SimpleCalculator.getFormattedText(temp1));
+                calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(temp1));
             }catch(ArithmeticException e1){
                 calculator.displayLabel.setText("Divide by 0.");
             }
@@ -45,7 +45,6 @@ public class OperatorButtons extends JButton implements ActionListener{
             return;
         }
 
-        //button pressed
         switch (calculator.operator){
             case '+':
                 temp += calculator.number;
@@ -73,6 +72,6 @@ public class OperatorButtons extends JButton implements ActionListener{
                 }
                 break;
         }
-        calculator.displayLabel.setText(SimpleCalculator.getFormattedText(temp));
+        calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(temp));
     }
 }

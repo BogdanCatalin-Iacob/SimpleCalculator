@@ -7,9 +7,9 @@ import java.text.DecimalFormat;
 
 public class DigitButtons extends JButton implements ActionListener {
 
-    SimpleCalculator calculator;
+    SimpleCalculatorUI calculator;
 
-    DigitButtons(int x, int y, int width, int height, String letters, SimpleCalculator calculator) {
+    DigitButtons(int x, int y, int width, int height, String letters, SimpleCalculatorUI calculator) {
         super(letters);
         setBounds(x, y, width, height);
         this.calculator = calculator;
@@ -64,6 +64,7 @@ public class DigitButtons extends JButton implements ActionListener {
             calculator.setClear = false;
         } else {
             calculator.displayLabel.setText(calculator.displayLabel.getText() + index);
+//            calculator.history.append(index);
         }
     }
 }
