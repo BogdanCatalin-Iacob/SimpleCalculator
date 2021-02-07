@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 
 public class SpecialButtons extends JButton implements ActionListener{
 
-    SimpleCalculator calculator;
+    SimpleCalculatorUI calculator;
 
-    SpecialButtons(int x, int y, int width, int height, String letter, SimpleCalculator calculator){
+    SpecialButtons(int x, int y, int width, int height, String letter, SimpleCalculatorUI calculator){
         super(letter);
         setBounds(x, y, width, height);
         this.calculator = calculator;
@@ -17,11 +17,7 @@ public class SpecialButtons extends JButton implements ActionListener{
     }
 
     static String delete(String s){
-        String res = s.substring(0, s.length() - 1);
-//        for(int i = 0; i < s.length() - 1; i++){
-//            res += s.charAt(i);
-//        }
-        return res;
+        return s.substring(0, s.length() - 1);
     }
 
     @Override

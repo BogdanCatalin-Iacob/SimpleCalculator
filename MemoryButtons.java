@@ -5,9 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MemoryButtons extends JButton implements ActionListener {
-    SimpleCalculator calculator;
+    SimpleCalculatorUI calculator;
 
-    MemoryButtons(int x, int y, int width, int height, String letters, SimpleCalculator calculator) {
+    MemoryButtons(int x, int y, int width, int height, String letters, SimpleCalculatorUI calculator) {
         super(letters);
         setBounds(x, y, width, height);
         this.calculator = calculator;
@@ -25,7 +25,7 @@ public class MemoryButtons extends JButton implements ActionListener {
                 calculator.memValue = 0.0;
                 break;
             case 'R':
-                calculator.displayLabel.setText(SimpleCalculator.getFormattedText(calculator.memValue));
+                calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(calculator.memValue));
                 break;
             case 'S':
                 calculator.memValue = 0.0;
@@ -34,7 +34,7 @@ public class MemoryButtons extends JButton implements ActionListener {
                 if (calculator.displayLabel.getText().equals("0") || calculator.displayLabel.getText().equals("0.0")) {
                     calculator.memoryLabel.setText(" ");
                 } else {
-                    calculator.memoryLabel.setText("M");
+                    calculator.memoryLabel.setText("M = " + calculator.memValue);
                 }
                 break;
         }
