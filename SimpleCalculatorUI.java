@@ -23,7 +23,7 @@ public class SimpleCalculatorUI extends JFrame {
     String[] digitButtonText = {"7", "8", "9", "4", "5", "6", "1", "2", "3", "+/-", "0", "."};
     String[] operatorButtonText = {"%", "√", "/", "*", "-", "1/x", "+", "="};
     String[] memoryButtonText = {"MC", "MR", "MS", "M+", "M-"};
-    String[] specialButtonText = {"CE", "C", "Del"};
+    String[] specialButtonText = {"CE", "C", "<<"};
     String[] advancedButtonText = {"sin", "cos", "tan", "log", "π"};
 
     DigitButtons[] digitButtons = new DigitButtons[digitButtonText.length];

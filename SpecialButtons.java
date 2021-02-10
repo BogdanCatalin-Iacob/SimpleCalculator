@@ -22,8 +22,8 @@ public class SpecialButtons extends JButton implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String opText = ((SpecialButtons)e.getSource()).getText();
-        if(opText.equals("Del")){
+        String specialButtonText = ((SpecialButtons)e.getSource()).getText();
+        if(specialButtonText.equals("<<")){
             String tempText = delete(calculator.displayLabel.getText());
             if(tempText.equals("")){
                 calculator.displayLabel.setText("0");
@@ -32,7 +32,7 @@ public class SpecialButtons extends JButton implements ActionListener{
             }
             return;
         }
-        if(opText.equals("C")){
+        if(specialButtonText.equals("C")){
             calculator.number = 0.0;
             calculator.operator = ' ';
             calculator.memValue = 0.0;
