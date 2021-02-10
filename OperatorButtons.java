@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class OperatorButtons extends JButton implements ActionListener{
+public class OperatorButtons extends JButton implements ActionListener {
 
     SimpleCalculatorUI calculator;
 
-    OperatorButtons(int x, int y, int width, int height, String letter, SimpleCalculatorUI calculator){
+    OperatorButtons(int x, int y, int width, int height, String letter, SimpleCalculatorUI calculator) {
         super(letter);
         setBounds(x, y, width, height);
         this.calculator = calculator;
@@ -18,60 +18,64 @@ public class OperatorButtons extends JButton implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String operatorText = ((OperatorButtons)e.getSource()).getText();
+        String operatorText = ((OperatorButtons) e.getSource()).getText();
         calculator.setClear = true;
-        double temp = Double.parseDouble(calculator.displayLabel.getText());
-        if(operatorText.equals("1/x")){
-            try{
-                double tempD = 1 / temp;
+        double tempDisplayNumber = Double.parseDouble(calculator.displayLabel.getText());
+        if (operatorText.equals("1/x")) {
+            try {
+                double tempD = 1 / tempDisplayNumber;
                 calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(tempD));
-            }catch(ArithmeticException ae){
+            } catch (ArithmeticException ae) {
                 calculator.displayLabel.setText("Divide by 0.");
             }
             return;
         }
-        if(operatorText.equals("√")){
-            try{
-                double temp1 = Math.sqrt(temp);
-                calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(temp1));
-            }catch(ArithmeticException e1){
+        if (operatorText.equals("√")) {
+            try {
+                double sqrtResult = Math.sqrt(tempDisplayNumber);
+                calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(sqrtResult));
+            } catch (ArithmeticException e1) {
                 calculator.displayLabel.setText("Divide by 0.");
             }
             return;
         }
-        if(!operatorText.equals("=")){
-            calculator.number = temp;
+
+        if (!operatorText.equals("=")) {
+            calculator.number = tempDisplayNumber;
             calculator.operator = operatorText.charAt(0);
             return;
         }
 
-        switch (calculator.operator){
+        switch (calculator.operator) {
+//            case '=':
+//                calculator.number = tempDisplayNumber;
+
             case '+':
-                temp += calculator.number;
+                tempDisplayNumber += calculator.number;
                 break;
             case '-':
-                temp = calculator.number - temp;
+                tempDisplayNumber = calculator.number - tempDisplayNumber;
                 break;
             case '*':
-                temp *= calculator.number;
+                tempDisplayNumber *= calculator.number;
                 break;
             case '/':
-                try{
-                    temp /= calculator.number;
-                }catch (ArithmeticException e1){
+                try {
+                    tempDisplayNumber = calculator.number / tempDisplayNumber;
+                } catch (ArithmeticException e1) {
                     calculator.displayLabel.setText("Divide by 0.");
                     return;
                 }
                 break;
             case '%':
-                try{
-                    temp = calculator.number % temp;
-                }catch (ArithmeticException e1){
+                try {
+                    tempDisplayNumber = (calculator.number * tempDisplayNumber) / 100;
+                } catch (ArithmeticException e1) {
                     calculator.displayLabel.setText("Divide by 0.");
                     return;
                 }
                 break;
         }
-        calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(temp));
+        calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(tempDisplayNumber));
     }
 }
