@@ -61,11 +61,9 @@ public class DigitButtons extends JButton implements ActionListener {
         }
         if (calculator.setClear) {
             calculator.displayLabel.setText("" + index);
-//            calculator.historyLabel.setText(calculator.history.append(index).toString());
             calculator.setClear = false;
         } else {
             calculator.displayLabel.setText(calculator.displayLabel.getText() + index);
-//            calculator.historyLabel.setText(calculator.history.append(index).toString());
         }
     }
 }
