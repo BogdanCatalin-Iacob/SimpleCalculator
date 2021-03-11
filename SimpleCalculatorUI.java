@@ -9,8 +9,6 @@ public class SimpleCalculatorUI extends JFrame {
     double number;
     double memValue;
     char operator;
-    StringBuilder history = new StringBuilder();
-//    boolean advancedCalculator = false;
     final int FRAME_WIDTH = 400;
     final int FRAME_HEIGHT = 650;
     final int HEIGHT = 65;
@@ -34,10 +32,6 @@ public class SimpleCalculatorUI extends JFrame {
 
     JLabel displayLabel = new JLabel("0");
     JLabel memoryLabel = new JLabel(" ");
-    JLabel historyLabel = new JLabel("" + history.toString());
-//    JLabel standardToAdvancedSwitch = new JLabel("Standard");
-
-//    JRadioButton toggleButton = new JRadioButton();
 
     Font font = new Font("Arial", Font.BOLD, 26);
     Font font2 = new Font("Arial", Font.PLAIN, 20);
@@ -47,35 +41,6 @@ public class SimpleCalculatorUI extends JFrame {
         int tempX = TOP_X;
         int y = TOP_Y;
 
-//        toggleButton.setBounds(TOP_X, (TOP_Y - 45), 20, 20);
-//        toggleButton.setOpaque(true);
-//        toggleButton.addItemListener((new ItemListener() {
-//            @Override
-//            public void itemStateChanged(ItemEvent e) {
-//                if(e.getStateChange() == ItemEvent.SELECTED){
-//                    advancedCalculator = true;
-//                    standardToAdvancedSwitch.setText("Advanced");
-//                }else if(e.getStateChange() == ItemEvent.DESELECTED){
-//                    advancedCalculator = false;
-//                    standardToAdvancedSwitch.setText("Standard");
-//                }
-//            }
-//        }));
-//        toggleButton.addItemListener(e -> {
-//            if (e.getStateChange() == ItemEvent.SELECTED) {
-//                advancedCalculator = true;
-//                standardToAdvancedSwitch.setText("Advanced");
-//            } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-//                advancedCalculator = false;
-//                standardToAdvancedSwitch.setText("Standard");
-//            }
-//        });
-//
-//        add(toggleButton);
-
-//        standardToAdvancedSwitch.setBounds((TOP_X + 20), (TOP_Y - 45), 100, 20);
-//        add(standardToAdvancedSwitch);
-
         displayLabel.setBounds(tempX, y, (FRAME_WIDTH - 40), (HEIGHT - 20));
         displayLabel.setBackground(Color.WHITE);
         displayLabel.setOpaque(true);
@@ -83,14 +48,6 @@ public class SimpleCalculatorUI extends JFrame {
         displayLabel.setFont(font);
         displayLabel.setHorizontalAlignment(JLabel.RIGHT);
         add(displayLabel);
-
-        historyLabel.setBounds(tempX, y -25, (FRAME_WIDTH - 40), (HEIGHT - 40));
-        historyLabel.setBackground(Color.CYAN);
-        historyLabel.setForeground(Color.DARK_GRAY);
-        historyLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-        historyLabel.setHorizontalAlignment(JLabel.RIGHT);
-        historyLabel.setOpaque(true);
-        add(historyLabel);
 
         memoryLabel.setBounds(TOP_X, TOP_Y + 20, WIDTH, HEIGHT);
         add(memoryLabel);

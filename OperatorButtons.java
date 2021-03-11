@@ -40,16 +40,16 @@ public class OperatorButtons extends JButton implements ActionListener {
             return;
         }
 
+
         if (!operatorText.equals("=")) {
+
             calculator.number = tempDisplayNumber;
             calculator.operator = operatorText.charAt(0);
+            calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(tempDisplayNumber));
             return;
         }
 
-        switch (calculator.operator) {
-//            case '=':
-//                calculator.number = tempDisplayNumber;
-
+            switch (calculator.operator) {
             case '+':
                 tempDisplayNumber += calculator.number;
                 break;
@@ -77,5 +77,5 @@ public class OperatorButtons extends JButton implements ActionListener {
                 break;
         }
         calculator.displayLabel.setText(SimpleCalculatorUI.getFormattedText(tempDisplayNumber));
-    }
+}
 }
